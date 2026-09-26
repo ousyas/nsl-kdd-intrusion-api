@@ -1,0 +1,43 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-09-25T22:38:30.690702+00:00",
+  "train_samples": 100778,
+  "validation_samples": 25195,
+  "test_samples": 22544,
+  "validation": {
+    "threshold": 0.38614776730537415,
+    "accuracy": 0.9896011113316134,
+    "precision_attack": 0.9902497434143004,
+    "recall_attack": 0.9873784751833532,
+    "f1_attack": 0.9888120249380818,
+    "roc_auc": 0.9992105737729383,
+    "confusion_matrix": [
+      [
+        13355,
+        114
+      ],
+      [
+        148,
+        11578
+      ]
+    ]
+  },
+  "test": {
+    "threshold": 0.38614776730537415,
+    "accuracy": 0.8135645848119234,
+    "precision_attack": 0.9662848497946834,
+    "recall_attack": 0.6967973194108937,
+    "f1_attack": 0.8097070675057726,
+    "roc_auc": 0.9495632980384737,
+    "confusion_matrix": [
+      [
+        9399,
+        312
+      ],
+      [
+        3891,
+        8942
+      ]
+    ]
+  }
+}

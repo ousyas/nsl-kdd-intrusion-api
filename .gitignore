@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+.venv-ubuntu/
+venv/
+
+# Tests and models
+.pytest_cache/
+models/*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+Untitled*.ipynb
+README_legacy.md
+
+# OS and IDE
+.DS_Store
+__MACOSX/
+.vscode/
+.idea/
+*.swp

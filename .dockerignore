@@ -1,0 +1,13 @@
+.git/
+.venv/
+.venv-ubuntu/
+.venv*/
+venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+tests/
+models/
+Projet.ipynb
+README_legacy.md
+*.log
