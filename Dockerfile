@@ -21,6 +21,8 @@ RUN python -m src.train
 
 FROM python:3.11-slim-bookworm
 
+LABEL org.opencontainers.image.source="https://github.com/ousyas/nsl-kdd-intrusion-api"
+
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PATH="/opt/venv/bin:$PATH"

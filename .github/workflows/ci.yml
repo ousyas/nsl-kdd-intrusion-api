@@ -1,4 +1,4 @@
-name: CI
+name: CI and container delivery
 
 on:
   push:
@@ -32,6 +32,9 @@ jobs:
     name: Build and start Docker image
     needs: tests
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out the repository
         uses: actions/checkout@v6
@@ -53,6 +56,24 @@ jobs:
           done
           docker logs kdd-api-ci
           exit 1
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish the tested image
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          IMAGE_NAME: ghcr.io/${{ github.repository }}
+        run: |
+          docker tag kdd-api:ci "$IMAGE_NAME:sha-$GITHUB_SHA"
+          docker tag kdd-api:ci "$IMAGE_NAME:latest"
+          docker push "$IMAGE_NAME:sha-$GITHUB_SHA"
+          docker push "$IMAGE_NAME:latest"
 
       - name: Stop container
         if: always()
